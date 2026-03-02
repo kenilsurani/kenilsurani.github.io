@@ -1,123 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Kenilkumar Surani | Mechanical CAD Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kenilkumar Surani | Mechanical Design Portfolio</title>
+  <meta name="description" content="Mechanical Design Engineer portfolio — CAD, SolidWorks, sheet metal, mechanisms, product design." />
+
   <style>
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0f1115;color:#e9eef6;line-height:1.6}
-    .wrap{max-width:1000px;margin:0 auto;padding:48px 20px}
-    .top{display:flex;gap:20px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
-    .card{background:#171a21;border:1px solid #242a36;border-radius:14px;padding:22px}
-    h1{margin:0 0 6px 0;font-size:34px}
-    .sub{color:#b7c0d3;margin:0}
-    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    a.btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid #2b3242;color:#e9eef6;text-decoration:none}
-    a.btn.primary{background:#0aa2ff;color:#06101a;border-color:#0aa2ff;font-weight:700}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px}
-    h2{margin:26px 0 10px 0;font-size:20px}
-    .tag{display:inline-block;background:#0f2230;border:1px solid #173b52;color:#a7d8ff;padding:4px 10px;border-radius:999px;font-size:12px;margin:6px 6px 0 0}
-    .proj h3{margin:0 0 8px 0}
-    .proj p{margin:0;color:#b7c0d3}
-    .foot{margin-top:28px;color:#b7c0d3}
-    .small{font-size:13px;color:#b7c0d3}
+    :root{
+      --bg:#0b0d12;
+      --card:#121622;
+      --card2:#151a29;
+      --border:#232a3a;
+      --text:#e9eef6;
+      --muted:#b7c0d3;
+      --accent:#0aa2ff;
+      --accent2:#7c5cff;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(900px 500px at 20% 0%, rgba(10,162,255,.15), transparent 60%),
+        radial-gradient(700px 500px at 80% 10%, rgba(124,92,255,.12), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:1080px;margin:0 auto;padding:20px 16px 64px}
+    .nav{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(11,13,18,.65);
+      border-bottom:1px solid rgba(35,42,58,.8);
+    }
+    .nav-inner{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{
+      width:34px;height:34px;border-radius:12px;
+      background: linear-gradient(135deg, rgba(10,162,255,.9), rgba(124,92,255,.9));
+      box-shadow: 0 8px 25px rgba(10,162,255,.12);
+    }
+    .brand strong{font-size:14px;letter-spacing:.3px}
+    .navlinks{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+    .pill{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      font-size:13px;
+    }
+    .pill:hover{background:rgba(255,255,255,.06); text-decoration:none}
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:linear-gradient(135deg, rgba(10,162,255,.18), rgba(124,92,255,.14));
+      color:var(--text);
+      font-weight:700;
+    }
+    .btn:hover{background:linear-gradient(135deg, rgba(10,162,255,.26), rgba(124,92,255,.22)); text-decoration:none}
+
+    /* Hero */
+    .hero{padding:28px 0 10px}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:14px}
+    @media (max-width: 900px){ .hero-grid{grid-template-columns:1fr} }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+    }
+    h1{margin:0 0 8px;font-size:34px;line-height:1.15}
+    @media (max-width: 520px){ h1{font-size:28px} }
+    .sub{color:var(--muted);margin:0 0 14px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+    @media (max-width:520px){ .kpi{grid-template-columns:1fr} }
+    .kpi .box{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px;
+      background:rgba(255,255,255,.02);
+    }
+    .kpi .num{font-size:18px;font-weight:800}
+    .kpi .lab{font-size:12px;color:var(--muted)}
+
+    /* Section */
+    .section{margin-top:14px}
+    .section h2{margin:0 0 10px;font-size:18px}
+    .muted{color:var(--muted)}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width:900px){ .grid2{grid-template-columns:1fr} }
+
+    /* Skills */
+    .tags{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+    }
+
+    /* Projects */
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    @media (max-width:980px){ .projects{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:600px){ .projects{grid-template-columns:1fr} }
+
+    .proj{
+      padding:0;
+      overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+    }
+    .thumb{
+      height:170px;
+      background:
+        radial-gradient(600px 200px at 20% 10%, rgba(10,162,255,.20), transparent 55%),
+        radial-gradient(600px 200px at 80% 0%, rgba(124,92,255,.16), transparent 55%),
+        rgba(255,255,255,.03);
+      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:.95;
+    }
+    .proj-body{padding:14px 14px 16px}
+    .proj h3{margin:0 0 6px;font-size:16px}
+    .proj p{margin:0;color:var(--muted);font-size:13px}
+    .meta{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+    .meta .tag{padding:6px 9px;font-size:11px}
+
+    /* Footer */
+    .footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+    .contact-row{display:flex;gap:10px;flex-wrap:wrap}
+    .contact-row .pill{font-weight:600}
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="top">
-      <div class="card" style="flex:1;min-width:280px">
-        <h1>Kenilkumar Surani</h1>
-        <p class="sub">Mechanical CAD Designer | SolidWorks (CSWP) | Transmission & Industrial Machine Design</p>
-        <p class="small">Germany • Email: kenilsurani2141@gmail.com • Phone: +49 157 5825 3235</p>
-        <div class="btns">
-          <a class="btn primary" href="#projects">View Projects</a>
-          <a class="btn" href="https://www.linkedin.com/in/kenil-surani" target="_blank">LinkedIn</a>
-          <a class="btn" href="assets/pdf/Kenil_Surani.pdf" target="_blank">Download CV</a>
-          <a class="btn" href="assets/pdf/Kenil Portfolio.pdf" target="_blank">Download Portfolio</a>
-        </div>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <strong>Kenilkumar Surani</strong>
       </div>
-
-      <div class="card" style="min-width:260px;max-width:340px">
-        <h2 style="margin-top:0">Skills</h2>
-        <span class="tag">SolidWorks (CSWP)</span>
-        <span class="tag">GD&amp;T</span>
-        <span class="tag">Tolerance Stack-up</span>
-        <span class="tag">BOM</span>
-        <span class="tag">DFM / DFA</span>
-        <span class="tag">Sheet Metal</span>
-        <span class="tag">KeyShot</span>
-        <span class="tag">Ansys (Basic FEM)</span>
+      <div class="navlinks">
+        <a class="pill" href="#projects">Projects</a>
+        <a class="pill" href="#skills">Skills</a>
+        <a class="pill" href="#contact">Contact</a>
       </div>
-    </div>
-
-    <div class="card" style="margin-top:14px">
-      <h2 style="margin-top:0">About</h2>
-      <p class="sub">
-        Mechanical design engineer with strong experience in 3D CAD modeling, manufacturing drawings, industrial machine systems,
-        and drivetrain/transmission concepts for electric vehicles.
-      </p>
-    </div>
-
-    <h2 id="projects">Projects</h2>
-    <div class="grid">
-       <div class="card proj">
-         <h3><a href="projects/mvt.html">Manual Variable Transmission (MVT) for EV</a></h3>
-         <p>Multi-ratio transmission system for electric bikes with validated improvements:40% better climb performance, 3× acceleration, 10% range increase.</p>
-       </div>
-      <div class="card proj">
-       <h3>
-        <a href="projects/tube-filling-machine.html">
-          Fully Automatic Plastic Tube Filling & Sealing Machine
-      </a>
-     </h3>
-      <p>
-        Industrial packaging automation system designed for Punneli Technologies. Complete mechanical design, manufacturing drawings, and production-ready documentation.
-      </p>
-      </div>
-     <div class="card proj">
-  <h3>
-    <a href="projects/spider-robot.html">
-      Spider Robot Ball for Fire Extinguisher Delivery
-    </a>
-  </h3>
-  <p>
-    Transformative multi-mode rescue robot capable of walking like a spider and
-    converting into a rolling ball for rapid deployment. Integrated CO₂ ball
-    launching mechanism, Raspberry Pi control system, and multi-DOF servo-driven
-    leg architecture.
-  </p>
-</div>
-      <div class="card proj">
-  <h3>
-    <a href="projects/12ru-data-rack-enclosure.html">
-      12RU Data Rack Electrical Enclosure
-    </a>
-  </h3>
-  <p>
-    Industrial IP66 & IK10 rated sheet-metal data rack enclosure designed for high-volume production.
-    Full fabrication drawings, BOM, and standards-compliant documentation.
-  </p>
-</div>
-      <div class="card proj">
-  <h3><a href="projects/pet-hair-cleaner.html">Pet Hair Cleaner – Product Design & Visualization</a></h3>
-  <p>
-    Consumer product design with engineered roller/blade cleaning mechanism and
-    KeyShot photorealistic renders for marketing and manufacturing launch.
-  </p>
-</div>
-    <div class="card foot">
-      <h2 style="margin-top:0">Contact</h2>
-      <p class="sub">Email: kenilsurani2141@gmail.com • LinkedIn: kenilsurani</p>
-      <p class="small">Next step: we’ll add project images and a downloadable CV.</p>
     </div>
   </div>
+
+  <div class="wrap">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-grid">
+        <div class="card">
+          <h1>Mechanical Design Portfolio</h1>
+          <p class="sub">
+            CAD & product development with strong focus on manufacturability — mechanisms, sheet metal,
+            industrial automation, and photorealistic visualization.
+          </p>
+
+          <div class="cta">
+            <a class="btn" href="#projects">View Projects</a>
+            <!-- OPTIONAL: enable after you upload resume -->
+            <a class="pill" href="assets/docs/Kenil_Surani_Resume.pdf" target="_blank">Download Resume</a>
+          </div>
+
+          <div class="kpi">
+            <div class="box">
+              <div class="num">9+</div>
+              <div class="lab">Projects in portfolio</div>
+            </div>
+            <div class="box">
+              <div class="num">SolidWorks</div>
+              <div class="lab">CAD • Sheet Metal • Assemblies</div>
+            </div>
+            <div class="box">
+              <div class="num">KeyShot</div>
+              <div class="lab">Rendering • Visualization</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Quick Highlights</h2>
+          <p class="muted" style="margin:0 0 10px">
+            A mix of innovation + industry projects.
+          </p>
+          <div class="tags">
+            <span class="tag">Mechanism Design</span>
+            <span class="tag">Sheet Metal</span>
+            <span class="tag">Manufacturing Drawings</span>
+            <span class="tag">Industrial Automation</span>
+            <span class="tag">Product Design</span>
+            <span class="tag">Rendering (KeyShot)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT + SKILLS -->
+    <div class="grid2 section" id="skills">
+      <div class="card">
+        <h2>About</h2>
+        <p class="muted" style="margin:0">
+          I build CAD models that are ready for manufacturing: clean assemblies, correct constraints,
+          sheet-metal design, detailed drawings, and practical design decisions. I enjoy mechanism design
+          and product development — from concept to documentation.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Skills</h2>
+        <div class="tags">
+          <span class="tag">SolidWorks</span>
+          <span class="tag">Sheet Metal</span>
+          <span class="tag">BOM & Drawings</span>
+          <span class="tag">GD&T (basic)</span>
+          <span class="tag">Mechanisms</span>
+          <span class="tag">Prototyping</span>
+          <span class="tag">KeyShot Rendering</span>
+          <span class="tag">Design for Manufacturing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section" id="projects">
+      <div class="card" style="padding:16px 18px;">
+        <h2 style="margin:0">Featured Projects</h2>
+        <p class="muted" style="margin:6px 0 0">Click a project to open the full case study.</p>
+      </div>
+
+      <div class="projects">
+        <!-- 1) MVT -->
+        <a class="card proj" href="projects/mvt.html" style="color:inherit;text-decoration:none">
+          <div class="thumb">
+            <img src="assets/img/mvt_02_iso.jpg" alt="MVT project preview"
+                 onerror="this.style.display='none'">
+          </div>
+          <div class="proj-body">
+            <h3>Manual Variable Transmission (MVT) for EV</h3>
+            <p>Multi-ratio transmission concept + validation for improved range and performance.</p>
+            <div class="meta">
+              <span class="tag">Mechanism</span><span class="tag">SolidWorks</span><span class="tag">Testing</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 2) Spider Robot -->
+        <a class="card proj" href="projects/spider-robot.html" style="color:inherit;text-decoration:none">
+          <div class="thumb">
+            <img src="assets/img/spider_02_open_top.jpg" alt="Spider robot preview"
+                 onerror="this.style.display='none'">
+          </div>
+          <div class="proj-body">
+            <h3>Spider Robot Ball – Fire Extinguisher Delivery</h3>
+            <p>Transforming robot: spider-walk mode + rolling ball mode with deployment concept.</p>
+            <div class="meta">
+              <span class="tag">Robotics</span><span class="tag">Mechanism</span><span class="tag">Prototype</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 3) Tube Filling -->
+        <a class="card proj" href="projects/tube-filling-machine.html" style="color:inherit;text-decoration:none">
+          <div class="thumb">
+            <img src="assets/img/tube_02_render.jpg" alt="Tube filling machine preview"
+                 onerror="this.style.display='none'">
+          </div>
+          <div class="proj-body">
+            <h3>Automatic Plastic Tube Filling & Sealing Machine</h3>
+            <p>Industrial packaging automation: full mechanical design + drawings + validation video.</p>
+            <div class="meta">
+              <span class="tag">Automation</span><span class="tag">Assemblies</span><span class="tag">Drawings</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 4) 12RU Enclosure -->
+        <a class="card proj" href="projects/12ru-data-rack-enclosure.html" style="color:inherit;text-decoration:none">
+          <div class="thumb">
+            <img src="assets/img/rack_12ru_01_drawing.jpg" alt="12RU enclosure preview"
+                 onerror="this.style.display='none'">
+          </div>
+          <div class="proj-body">
+            <h3>12RU Data Rack Electrical Enclosure</h3>
+            <p>IP66 / IK10 rated sheet-metal enclosure with standards-compliant documentation.</p>
+            <div class="meta">
+              <span class="tag">Sheet Metal</span><span class="tag">BOM</span><span class="tag">IP/IK</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 5) Pet Hair Cleaner -->
+        <a class="card proj" href="projects/pet-hair-cleaner.html" style="color:inherit;text-decoration:none">
+          <div class="thumb">
+            <img src="assets/img/petcleaner_01_iso.jpg" alt="Pet hair cleaner preview"
+                 onerror="this.style.display='none'">
+          </div>
+          <div class="proj-body">
+            <h3>Pet Hair Cleaner – Product Design & Visualization</h3>
+            <p>Consumer product design with KeyShot renders and internal cleaning mechanism layout.</p>
+            <div class="meta">
+              <span class="tag">Product</span><span class="tag">KeyShot</span><span class="tag">DFM</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Add more projects here later -->
+        <div class="card proj" style="border-style:dashed;">
+          <div class="thumb"></div>
+          <div class="proj-body">
+            <h3>Next projects coming…</h3>
+            <p>We’ll add the remaining projects one by one with the same clean layout.</p>
+            <div class="meta"><span class="tag">In Progress</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section" id="contact">
+      <div class="card">
+        <h2>Contact</h2>
+        <p class="muted" style="margin:0 0 10px">
+          Want to discuss a project or role? Reach out:
+        </p>
+        <div class="contact-row">
+          <!-- Replace with your real email/LinkedIn if you want -->
+          <span class="pill">Email: (add your email)</span>
+          <span class="pill">LinkedIn: (add your link)</span>
+          <span class="pill">Location: Germany</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      © <span id="y"></span> Kenilkumar Surani • Built with GitHub Pages
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
