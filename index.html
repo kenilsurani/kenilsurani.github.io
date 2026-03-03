@@ -126,18 +126,38 @@
       overflow:hidden;
       background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
     }
-    .thumb{
-      height:170px;
-      background:
-        radial-gradient(600px 200px at 20% 10%, rgba(10,162,255,.20), transparent 55%),
-        radial-gradient(600px 200px at 80% 0%, rgba(124,92,255,.16), transparent 55%),
-        rgba(255,255,255,.03);
-      border-bottom:1px solid var(--border);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-    }
+        /* ===== Project hover + CTA ===== */
+.proj{
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+.proj:hover{
+  transform: translateY(-2px);
+  border-color: rgba(10,162,255,.35);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+}
+.proj-cta{
+  margin-top:10px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  font-weight:800;
+  color: var(--text);
+  opacity:.85;
+}
+.proj:hover .proj-cta{opacity:1}
+   .thumb{
+  height:200px;
+  background:
+    radial-gradient(600px 200px at 20% 10%, rgba(10,162,255,.20), transparent 55%),
+    radial-gradient(600px 200px at 80% 0%, rgba(124,92,255,.16), transparent 55%),
+    rgba(255,255,255,.03);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
     .thumb img{
       width:100%;
       height:100%;
@@ -609,6 +629,7 @@
   </script>
 </body>
 </html>
+
 
 
 
